@@ -22,4 +22,46 @@
         android:text="ttttttt"
         android:id="@+id/outputTime"/>
 
+    <TextView
+        android:id="@+id/inputItem"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Add Item" />
+
+    <EditText
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/addItem" />
+
+    <TextView
+        android:id="@+id/inputUnit"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Add Item unit" />
+
+    <EditText
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/addUnit" />
+
+    <TextView
+        android:id="@+id/inputQuantity"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Add Item quantity" />
+
+    <EditText
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/addQuantity" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create item and add to event" />
+
 </LinearLayout>

@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "potluck";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2; //increment version number to invoke onUpgrade method
     private Context context;
 
 
@@ -24,27 +24,38 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(createEventTable());
-
+        sqLiteDatabase.execSQL(createEventDetailTable());
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS EVENT");
+        onCreate(sqLiteDatabase);
     }
 
     public Cursor getEvent(SQLiteDatabase db, Event event) {
-        Cursor cursor = db.rawQuery("select * from EVENT WHERE name = ?", new String[] {"asdf"});
+        Cursor cursor = db.rawQuery("select * from EVENT_MASTER WHERE name = ?", new String[] {event.getName()});
         return cursor;
     }
 
-//    public void insertItemForEvent(SQLiteDatabase db, Event event, Item item) {
-//        ContentValues values = new ContentValues();
-//        values.put("NAME", event.getName());
-//        values.put("UNIT", event.getDate());
-//        values.put("QUANTITY", event.getTime());
+
+    public void insertItemForEvent(SQLiteDatabase db, Event event, Item item) {
+
+        String sql;
+        sql = "INSERT INTO EVENT_DETAIL (NAME, UNIT, QUANTITY, EVENTID) " +
+                "VALUES ('" + item.getName() + "', '" + item.getUnit() + "', '" +
+                item.getQuantity() + "', (SELECT _id from EVENT_MASTER WHERE NAME = '" +
+                event.getName() + "'));";
+        db.execSQL(sql);
 //
-//        db.insert("EVENT", null, values);
-//    }
+//        ContentValues values = new ContentValues();
+//        values.put("NAME", item.getName());
+//        values.put("UNIT", item.getUnit());
+//        values.put("QUANTITY", item.getQuantity());
+//        values.
+//
+//        db.insert("EVENT_DETAIL", null, values);
+    }
 
     public void insertEvent(final SQLiteDatabase db, Event event) {
         ContentValues values = new ContentValues();
@@ -52,16 +63,30 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put("DATE", event.getDate());
         values.put("TIME", event.getTime());
 
-        db.insert("EVENT", null, values);
+        db.insert("EVENT_MASTER", null, values);
     }
 
     public String createEventTable() {
         String sql = "";
-        sql += "CREATE TABLE EVENT (";
+        sql += "CREATE TABLE EVENT_MASTER (";
         sql += "_id INTEGER PRIMARY KEY AUTOINCREMENT, ";
         sql += "NAME TEXT, ";
         sql += "DATE TEXT, ";
-        sql += "TIME INTEGER);";
+        sql += "TIME NUMERIC);"; //USES TEXT TYPE
+
+        return sql;
+    }
+
+    public String createEventDetailTable() {
+
+        String sql = "";
+        sql += "CREATE TABLE EVENT_DETAIL (";
+        sql += "_id INTEGER PRIMARY KEY AUTOINCREMENT, ";
+        sql += "NAME TEXT, ";
+        sql += "UNIT TEXT, ";
+        sql += "QUANTITY INTEGER, ";
+        sql += "EVENTID INTEGER, ";
+        sql += "FOREIGN KEY(EVENTID) REFERENCES EVENT_MASTER(_id)); ";
 
         return sql;
     }

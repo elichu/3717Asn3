@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 /**
@@ -25,15 +28,15 @@ public class DisplayEventActivity extends Activity {
         setContentView(R.layout.event_output);
 
         helper = new DBHelper(this);
-        SQLiteDatabase db = helper.getWritableDatabase();
+        db = helper.getWritableDatabase();
 
         Intent intent = getIntent();
         String eventName = intent.getStringExtra("eventName");
         String eventDate = intent.getStringExtra("eventDate");
-        int eventTime = intent.getIntExtra("eventTime", 0);
+        String eventTime = intent.getStringExtra("eventTime");
 
         event = new Event(eventName, eventDate, eventTime);
-        //addEventToDB(event);
+        addEventToDB(event);
 
         TextView nameField = (TextView) findViewById(R.id.outputName);
         TextView dateField = (TextView) findViewById(R.id.outputDate);
@@ -43,17 +46,42 @@ public class DisplayEventActivity extends Activity {
         Cursor cursor = helper.getEvent(db, event);
         String dbName = null;
         String dbDate = null;
-        int dbTime = 0;
+        String dbTime = null;
         if (cursor.moveToFirst() ) {
             dbName = cursor.getString(1);
             dbDate = cursor.getString(2);
-            dbTime = Integer.parseInt(cursor.getString(3));
+            dbTime = cursor.getString(3);
         }
         cursor.close();
 
         nameField.setText(dbName);
         dateField.setText(dbDate);
         timeField.setText(dbTime);
+
+        final Button button2 = (Button) findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Item item = getItemFromInputs();
+                event.addItem(item);
+                addItemToDB(event, item);
+                button2.setText("Item added");
+            }
+        });
+    }
+
+    public void addItemToDB(Event event, Item item) {
+
+        SQLiteDatabase db;
+
+        db = helper.getWritableDatabase();
+        db.beginTransaction();
+        try {
+            helper.insertItemForEvent(db, event, item);
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
     }
 
     public void addEventToDB(Event event) {
@@ -68,6 +96,33 @@ public class DisplayEventActivity extends Activity {
         } finally {
             db.endTransaction();
         }
+    }
+
+    public Item getItemFromInputs() {
+
+        Item item = null;
+
+        EditText eItem = (EditText) findViewById(R.id.addItem);
+        EditText eUnit = (EditText) findViewById(R.id.addUnit);
+        EditText eQuantity = (EditText) findViewById(R.id.addQuantity);
+
+        if(eItem.getText().toString().isEmpty() || eUnit.getText().toString().isEmpty()
+                || eQuantity.getText().toString().isEmpty()) {
+            return item;
+        }
+
+        String itemName = eItem.getText().toString();
+        String itemUnit = eUnit.getText().toString();
+        int itemQuantity = Integer.parseInt(eQuantity.getText().toString());
+
+        item = new Item(itemName, itemUnit, itemQuantity);
+
+        return item;
 
     }
+
+//    public void addItemToEvent() {
+//        Item item = getItemFromInputs();
+//        event.addItem(item);
+//    }
 }

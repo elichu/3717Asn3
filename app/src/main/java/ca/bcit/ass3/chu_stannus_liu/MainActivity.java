@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
                 String eventName = eName.getText().toString();
                 String eventDate = eDate.getText().toString();
-                int eventTime = Integer.parseInt(eTime.getText().toString());
+                String eventTime = eTime.getText().toString();
 
 //                Event event = new Event(eventName, eventDate, eventTime);
 

@@ -10,11 +10,11 @@ public class Event {
 
     private String _name;
     private String _date;
-    private int _time;
+    private String _time;
 
     ArrayList<Item> items = new ArrayList<Item>();
 
-    public Event(String name, String date, int time) {
+    public Event(String name, String date, String time) {
         this._name = name;
         this._date = date;
         this._time = time;
@@ -30,6 +30,6 @@ public class Event {
 
     public String getName() { return _name; };
     public String getDate() { return _date; };
-    public int getTime() { return _time; };
+    public String getTime() { return _time; };
 
 }
