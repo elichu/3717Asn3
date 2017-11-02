@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".DisplayEventActivity"/>
+        <activity android:name=".DisplayItemActivity" />
+        <activity android:name=".DisplayItemsActivity" />
     </application>
 
 </manifest>

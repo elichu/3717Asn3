@@ -42,7 +42,6 @@ public class DisplayEventActivity extends Activity {
         TextView dateField = (TextView) findViewById(R.id.outputDate);
         TextView timeField = (TextView) findViewById(R.id.outputTime);
 
-
         Cursor cursor = helper.getEvent(db, event);
         String dbName = null;
         String dbDate = null;
@@ -65,7 +64,15 @@ public class DisplayEventActivity extends Activity {
                 Item item = getItemFromInputs();
                 event.addItem(item);
                 addItemToDB(event, item);
-                button2.setText("Item added");
+
+                Intent intent = new Intent(DisplayEventActivity.this, DisplayItemsActivity.class);
+                intent.putExtra("event", event);
+
+//                intent.putExtra("itemName", item.getName());
+//                intent.putExtra("itemUnit", item.getUnit());
+//                intent.putExtra("itemQuantity", item.getQuantity());
+
+                startActivity(intent);
             }
         });
     }
@@ -96,6 +103,16 @@ public class DisplayEventActivity extends Activity {
         } finally {
             db.endTransaction();
         }
+
+        attachEventId(event);
+    }
+
+    public void attachEventId(Event event) {
+        Cursor cursor = helper.retrieveEventId(db, event);
+        if (cursor.moveToFirst() ) {
+            event.setEventId(cursor.getString(0));
+        }
+        cursor.close();
     }
 
     public Item getItemFromInputs() {

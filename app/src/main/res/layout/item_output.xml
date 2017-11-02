@@ -7,60 +7,57 @@
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:text="nnnnnn"
-        android:id="@+id/outputName"/>
+        android:id="@+id/outItemName"/>
 
     <TextView
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:text="dddddd"
-        android:id="@+id/outputDate"/>
+        android:text="uuuuuuu"
+        android:id="@+id/outItemUnit"/>
 
     <TextView
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:text="ttttttt"
-        android:id="@+id/outputTime"/>
+        android:text="qqqqqqq"
+        android:id="@+id/outItemQuantity"/>
 
     <TextView
-        android:id="@+id/inputItem"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Add Item" />
+        android:text="Add Contrib" />
 
     <EditText
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:id="@+id/addItem" />
+        android:id="@+id/inputContrib" />
 
     <TextView
-        android:id="@+id/inputUnit"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Add Item unit" />
+        android:text="Add quantity" />
 
     <EditText
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:id="@+id/addUnit" />
+        android:id="@+id/inputQuant" />
 
     <TextView
-        android:id="@+id/inputQuantity"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Add Item quantity" />
+        android:text="Add date" />
 
     <EditText
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:id="@+id/addQuantity" />
+        android:id="@+id/inputDate" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create item and add to event" />
+        android:text="Make contribution" />
 
 </LinearLayout>
