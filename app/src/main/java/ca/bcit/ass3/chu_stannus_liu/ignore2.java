@@ -12,9 +12,9 @@ import android.widget.TextView;
  * Created by E on 2017-11-02.
  */
 
-public class ItemsAdapter extends CursorAdapter {
+public class ignore2 extends CursorAdapter {
 
-    public ItemsAdapter(Context context, Cursor c) {
+    public ignore2(Context context, Cursor c) {
         super(context, c);
     }
 
@@ -22,7 +22,7 @@ public class ItemsAdapter extends CursorAdapter {
     public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
 
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-        View view = inflater.inflate(R.layout.items_list, viewGroup, false);
+        View view = inflater.inflate(R.layout.zignore_list, viewGroup, false);
 
         return view;
     }

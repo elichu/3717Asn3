@@ -3,24 +3,21 @@ package ca.bcit.ass3.chu_stannus_liu;
 import android.app.ListActivity;
 import android.app.LoaderManager;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
-import java.util.ArrayList;
-
 /**
  * Created by E on 2017-11-02.
  */
 
-public class DisplayItemsActivity extends ListActivity {
+public class ignore1 extends ListActivity {
 
     private DBHelper dbHelper;
     private SimpleCursorAdapter adapter;
     private String[][] items;
-    private String TAG = MainActivity.class.getSimpleName();
+    private String TAG = DisplayItemListActivity.class.getSimpleName();
     private ListView lv;
     private Event event;
 
@@ -30,7 +27,7 @@ public class DisplayItemsActivity extends ListActivity {
         final LoaderManager manager;
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.items_output);
+        setContentView(R.layout.zignore_output);
 
         Intent intent = getIntent();
         final Event event = intent.getParcelableExtra("event");
@@ -39,7 +36,7 @@ public class DisplayItemsActivity extends ListActivity {
         dbHelper = new DBHelper(this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        ItemsAdapter adapter = new ItemsAdapter(this, dbHelper.getAllItems(db, event.getEventId()));
+        ignore2 adapter = new ignore2(this, dbHelper.getAllItems(db, event.getEventId()));
         setListAdapter(adapter);
 
     }

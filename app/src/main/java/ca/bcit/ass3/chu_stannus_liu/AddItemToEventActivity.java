@@ -4,78 +4,87 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 /**
  * Created by E on 2017-10-31.
  */
 
-public class DisplayEventActivity extends Activity {
+public class AddItemToEventActivity extends Activity {
 
     private SQLiteDatabase db;
     private DBHelper helper;
     private Cursor cursor;
     private Event event;
+    String event1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.event_output);
+        setContentView(R.layout.add_item);
 
         helper = new DBHelper(this);
         db = helper.getWritableDatabase();
 
         Intent intent = getIntent();
-        String eventName = intent.getStringExtra("eventName");
-        String eventDate = intent.getStringExtra("eventDate");
-        String eventTime = intent.getStringExtra("eventTime");
-
-        event = new Event(eventName, eventDate, eventTime);
-        addEventToDB(event);
-
-        TextView nameField = (TextView) findViewById(R.id.outputName);
-        TextView dateField = (TextView) findViewById(R.id.outputDate);
-        TextView timeField = (TextView) findViewById(R.id.outputTime);
-
-        Cursor cursor = helper.getEvent(db, event);
-        String dbName = null;
-        String dbDate = null;
-        String dbTime = null;
-        if (cursor.moveToFirst() ) {
-            dbName = cursor.getString(1);
-            dbDate = cursor.getString(2);
-            dbTime = cursor.getString(3);
-        }
-        cursor.close();
-
-        nameField.setText(dbName);
-        dateField.setText(dbDate);
-        timeField.setText(dbTime);
+        event1 = intent.getStringExtra("event");
+//        String eventName = intent.getStringExtra("eventName");
+//        String eventDate = intent.getStringExtra("eventDate");
+//        String eventTime = intent.getStringExtra("eventTime");
+//
+//        event = new Event(eventName, eventDate, eventTime);
+//        addEventToDB(event);
+//
+//        TextView nameField = (TextView) findViewById(R.id.outputName);
+//        TextView dateField = (TextView) findViewById(R.id.outputDate);
+//        TextView timeField = (TextView) findViewById(R.id.outputTime);
+//
+//        Cursor cursor = helper.getEvent(db, event);
+//        String dbName = null;
+//        String dbDate = null;
+//        String dbTime = null;
+//        if (cursor.moveToFirst() ) {
+//            dbName = cursor.getString(1);
+//            dbDate = cursor.getString(2);
+//            dbTime = cursor.getString(3);
+//        }
+//        cursor.close();
+//
+//        nameField.setText(dbName);
+//        dateField.setText(dbDate);
+//        timeField.setText(dbTime);
 
         final Button button2 = (Button) findViewById(R.id.button2);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Item item = getItemFromInputs();
-                event.addItem(item);
-                addItemToDB(event, item);
+                //event.addItem(item);
+                //addItemToDB(event, item);
 
-                Intent intent = new Intent(DisplayEventActivity.this, DisplayItemsActivity.class);
-                intent.putExtra("event", event);
+                Intent intent = new Intent(AddItemToEventActivity.this, DisplayItemListActivity.class);
+                intent.putExtra("event", event1);
 
-//                intent.putExtra("itemName", item.getName());
-//                intent.putExtra("itemUnit", item.getUnit());
-//                intent.putExtra("itemQuantity", item.getQuantity());
+                intent.putExtra("itemName", item.getName());
+                intent.putExtra("itemUnit", item.getUnit());
+                intent.putExtra("itemQuantity", item.getQuantity());
 
                 startActivity(intent);
             }
         });
     }
+
+//    public void makeListview() {
+//
+//        helper = new DBHelper(this);
+//        SQLiteDatabase db = helper.getReadableDatabase();
+//
+//        EventAdapter adapter = new EventAdapter(this, helper.getAllItems(db, event.getEventId()));
+//        setListAdapter(adapter);
+//    }
 
     public void addItemToDB(Event event, Item item) {
 

@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "potluck";
-    private static final int DB_VERSION = 3; //increment version number to invoke onUpgrade method
+    private static final int DB_VERSION = 5; //increment version number to invoke onUpgrade method
     private Context context;
 
 
@@ -67,6 +67,25 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor getAllEvents(SQLiteDatabase db) {
+        Cursor cursor = db.rawQuery("select _eventId _id, Name, Date, Time from EVENT_MASTER", null);
+        cursor.moveToFirst();
+//        Cursor cursor = db.query("EVENT_DETAIL",
+//                new String [] {  "_detailId _id", "ItemName", "ItemUnit", "ItemQuantity" }, "eventId",
+//                new String [] { "6" }, null, null, null, null);
+        return cursor;
+    }
+
+    public void insertItemForEvent(SQLiteDatabase db, String event, Item item) {
+
+        String sql;
+        sql = "INSERT INTO EVENT_DETAIL (ItemName, ItemUnit, ItemQuantity, eventId) " +
+                "VALUES ('" + item.getName() + "', '" + item.getUnit() + "', '" +
+                item.getQuantity() + "', (SELECT _eventId from EVENT_MASTER WHERE NAME = '" +
+                event + "'));";
+        db.execSQL(sql);
+    }
+
 
     public void insertItemForEvent(SQLiteDatabase db, Event event, Item item) {
 
@@ -85,6 +104,11 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put("Time", event.getTime());
 
         db.insert("EVENT_MASTER", null, values);
+    }
+
+    public Cursor retrieveEventId(SQLiteDatabase db, String event) {
+        Cursor cursor = db.rawQuery("select _eventId _id from EVENT_MASTER WHERE Name = ?", new String[] {event});
+        return cursor;
     }
 
     public Cursor retrieveEventId(SQLiteDatabase db, Event event) {

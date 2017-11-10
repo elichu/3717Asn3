@@ -6,19 +6,19 @@
     <TextView
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:text="nnnnnn"
+        android:text="event name"
         android:id="@+id/outputName"/>
 
     <TextView
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:text="dddddd"
+        android:text="event date"
         android:id="@+id/outputDate"/>
 
     <TextView
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:text="ttttttt"
+        android:text="event time"
         android:id="@+id/outputTime"/>
 
     <TextView

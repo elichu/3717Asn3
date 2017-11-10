@@ -21,7 +21,7 @@ public class DisplayItemActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.event_output);
+        setContentView(R.layout.add_item);
 
         helper = new DBHelper(this);
         db = helper.getWritableDatabase();
