@@ -19,7 +19,7 @@ public class AddItemToEventActivity extends Activity {
     private DBHelper helper;
     private Cursor cursor;
     private Event event;
-    String event1;
+    int event1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,10 @@ public class AddItemToEventActivity extends Activity {
         db = helper.getWritableDatabase();
 
         Intent intent = getIntent();
-        event1 = intent.getStringExtra("event");
+        event1 = intent.getIntExtra("event", 0);
+
+        //event1 = intent.getStringExtra("event");
+
 //        String eventName = intent.getStringExtra("eventName");
 //        String eventDate = intent.getStringExtra("eventDate");
 //        String eventTime = intent.getStringExtra("eventTime");
@@ -82,7 +85,7 @@ public class AddItemToEventActivity extends Activity {
 //        helper = new DBHelper(this);
 //        SQLiteDatabase db = helper.getReadableDatabase();
 //
-//        EventAdapter adapter = new EventAdapter(this, helper.getAllItems(db, event.getEventId()));
+//        DisplayItemListAdapter adapter = new DisplayItemListAdapter(this, helper.getAllItems(db, event.getEventId()));
 //        setListAdapter(adapter);
 //    }
 

@@ -1,23 +1,19 @@
 package ca.bcit.ass3.chu_stannus_liu;
 
-import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 /**
- * Created by E on 2017-11-09.
+ * Created by E on 2017-11-11.
  */
 
-public class DisplayEventListAdapter extends CursorAdapter {
-    public DisplayEventListAdapter(Context context, Cursor c) {
+public class SearchResultsAdapter extends CursorAdapter {
+    public SearchResultsAdapter(Context context, Cursor c) {
         super(context, c);
     }
 

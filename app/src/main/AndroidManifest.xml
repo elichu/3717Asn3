@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DisplayEventListActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,8 +17,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddItemToEventActivity"/>
-        <activity android:name=".DisplayItemActivity" />
         <activity android:name=".DisplayItemListActivity" />
+        <activity android:name=".DisplayEventDetailActivity" />
+        <activity android:name=".DisplayEventListActivity"/>
+        <activity android:name=".EditEventActivity" />
+        <activity android:name=".DeleteEventActivity" />
+        <activity android:name=".CreateEventActivity" />
+        <activity android:name=".EditItemActivity" />
+        <activity android:name=".SearchResultsActivity" />
+
     </application>
 
 </manifest>

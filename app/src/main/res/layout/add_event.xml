@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/inputEvent"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Name" />
+
+    <EditText
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/addName" />
+
+    <TextView
+        android:id="@+id/inputDate"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Date" />
+
+    <EditText
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/addDate" />
+
+    <TextView
+        android:id="@+id/inputTime"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Time" />
+
+    <EditText
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/addTime" />
+
+    <Button
+        android:id="@+id/createEventButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create event" />
+
+</LinearLayout>

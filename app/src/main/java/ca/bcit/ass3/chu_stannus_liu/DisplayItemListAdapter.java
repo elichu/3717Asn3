@@ -12,16 +12,16 @@ import android.widget.TextView;
  * Created by E on 2017-11-02.
  */
 
-public class EventAdapter extends CursorAdapter {
+public class DisplayItemListAdapter extends CursorAdapter {
 
-    public EventAdapter(Context context, Cursor c) {
+    public DisplayItemListAdapter(Context context, Cursor c) {
         super(context, c);
     }
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-        View view = inflater.inflate(R.layout.event_detail, viewGroup, false);
+        View view = inflater.inflate(R.layout.item_detail, viewGroup, false);
 
         return view;
     }
@@ -29,13 +29,13 @@ public class EventAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
 
-        TextView itemName = (TextView) view.findViewById(R.id.eventName);
+        TextView itemName = (TextView) view.findViewById(R.id.itemName);
         itemName.setText(cursor.getString(1));
 
-        TextView itemUnit = (TextView) view.findViewById(R.id.eventDate);
+        TextView itemUnit = (TextView) view.findViewById(R.id.itemUnit);
         itemUnit.setText(cursor.getString(2));
 
-        TextView itemQuantity = (TextView) view.findViewById(R.id.eventTime);
+        TextView itemQuantity = (TextView) view.findViewById(R.id.itemQuantity);
         itemQuantity.setText(cursor.getString(3));
 
     }

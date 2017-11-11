@@ -9,15 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 
 import java.util.ArrayList;
 
 /**
- * Created by E on 2017-11-09.
+ * Created by E on 2017-11-11.
  */
 
-public class DisplayEventListActivity extends AppCompatActivity {
+public class SearchResultsActivity extends AppCompatActivity {
 
     private DBHelper helper;
     private ListView lv;
@@ -42,19 +41,18 @@ public class DisplayEventListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Cursor c = (Cursor) adapterView.getAdapter().getItem(i);
                 c.moveToPosition(i);
-                    Intent intent = new Intent(DisplayEventListActivity.this, DisplayEventDetailActivity.class);
-                    intent.putExtra("event", i+1);
-                    intent.putExtra("eventName", c.getString(1));
-                    startActivity(intent);
+                Intent intent = new Intent(SearchResultsActivity.this, DisplayEventDetailActivity.class);
+                intent.putExtra("event", i+1);
+                intent.putExtra("eventName", c.getString(1));
+                startActivity(intent);
 
             }
         });
         db = helper.getReadableDatabase();
 
-        DisplayEventListAdapter adapter = new DisplayEventListAdapter(DisplayEventListActivity.this
+        DisplayEventListAdapter adapter = new DisplayEventListAdapter(SearchResultsActivity.this
                 , helper.getAllEvents(db));
 
         lv.setAdapter(adapter);
     }
-
 }

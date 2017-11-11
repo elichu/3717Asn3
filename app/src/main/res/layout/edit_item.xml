@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/itemTitle"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Change name" />
+
+    <EditText
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/changeItemName"
+        android:text="sometext"/>
+
+    <TextView
+        android:id="@+id/unitTitle"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Change unit" />
+
+    <EditText
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/changeUnit"
+        android:text="sometext"/>
+
+    <TextView
+        android:id="@+id/quantityTitle"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Change quantity" />
+
+    <EditText
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/changeQuantity"
+        android:text="sometext"/>
+
+    <Button
+        android:id="@+id/updateItemButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Item" />
+
+    <Button
+        android:id="@+id/deleteItemButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete Item" />
+
+</LinearLayout>
