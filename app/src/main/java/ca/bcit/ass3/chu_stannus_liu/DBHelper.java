@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "potluck";
-    private static final int DB_VERSION = 5; //increment version number to invoke onUpgrade method
+    private static final int DB_VERSION = 6; //increment version number to invoke onUpgrade method
     private Context context;
 
 
@@ -25,7 +25,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(createEventTable());
         sqLiteDatabase.execSQL(createEventDetailTable());
-        //sqLiteDatabase.execSQL(createContributionTable());
     }
 
     @Override
@@ -37,28 +36,37 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
+    public Cursor searchEvent(SQLiteDatabase db, String keyword) {
+        Cursor cursor = db.rawQuery("select * from EVENT_MASTER WHERE EVENT_MASTER MATCH ?",
+                new String[] {keyword});
+        return cursor;
+    }
+
     public Cursor getEvent(SQLiteDatabase db, int event) {
         Cursor cursor = db.rawQuery("select * from EVENT_MASTER WHERE _eventid = ?", new String[] {Integer.toString(event)});
         return cursor;
     }
 
-    public Cursor getEvent(SQLiteDatabase db, Event event) {
-        Cursor cursor = db.rawQuery("select * from EVENT_MASTER WHERE name = ?", new String[] {event.getName()});
-        return cursor;
-    }
+    public Cursor searchEvents(SQLiteDatabase db, String keyword) {
 
-    public Cursor getEvent(SQLiteDatabase db, String eventName) {
-        Cursor cursor = db.rawQuery("select * from EVENT_MASTER WHERE name = ?", new String[] {eventName});
-        return cursor;
-    }
+        String[] keywords = keyword.split(" ");
+        String[] wildcards = new String[keywords.length];
+        String query = "select _eventId _id, Name, Date, Time from EVENT_MASTER WHERE name LIKE ?";
+        String likeQuery = " OR name LIKE ?";
 
-    public Cursor getItem(SQLiteDatabase db, Item item) {
-        Cursor cursor = db.rawQuery("select * from EVENT_DETAIL WHERE ItemName = ?", new String[] {item.getName()});
-        return cursor;
-    }
+        int i = 0;
+        if(keywords.length > 1) {
 
-    public Cursor getItem(SQLiteDatabase db, String itemName) {
-        Cursor cursor = db.rawQuery("select * from EVENT_DETAIL WHERE ItemName = ?", new String[] {itemName});
+            for (String word : keywords) {
+                query = query + likeQuery;
+                wildcards[i++] = "%"+word+"%";
+            }
+        } else {
+            wildcards[0] = "%"+keyword+"%";
+        }
+
+        Cursor cursor = db.rawQuery(query,
+                wildcards);
         return cursor;
     }
 
@@ -66,49 +74,31 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("select _detailId _id, ItemName, ItemUnit, ItemQuantity from EVENT_DETAIL WHERE eventId = ?",
                 new String[] {eventId});
         cursor.moveToFirst();
-//        Cursor cursor = db.query("EVENT_DETAIL",
-//                new String [] {  "_detailId _id", "ItemName", "ItemUnit", "ItemQuantity" }, "eventId",
-//                new String [] { "6" }, null, null, null, null);
         return cursor;
     }
 
     public Cursor getAllEvents(SQLiteDatabase db) {
         Cursor cursor = db.rawQuery("select _eventId _id, Name, Date, Time from EVENT_MASTER", null);
         cursor.moveToFirst();
-//        Cursor cursor = db.query("EVENT_DETAIL",
-//                new String [] {  "_detailId _id", "ItemName", "ItemUnit", "ItemQuantity" }, "eventId",
-//                new String [] { "6" }, null, null, null, null);
         return cursor;
     }
 
-    public void insertItemForEventID(SQLiteDatabase db, String event, Item item) {
+    public void updateItem(final SQLiteDatabase db, Item item, int eventID, int itemID) {
+        ContentValues values = new ContentValues();
+        values.put("ItemName", item.getName());
+        values.put("ItemUnit", item.getUnit());
+        values.put("ItemQuantity", item.getQuantity());
 
-        String sql;
-        sql = "INSERT INTO EVENT_DETAIL (ItemName, ItemUnit, ItemQuantity, eventId) " +
-                "VALUES ('" + item.getName() + "', '" + item.getUnit() + "', '" +
-                item.getQuantity() + "', '" +
-                event + "');";
-        db.execSQL(sql);
+        db.update("EVENT_DETAIL", values, "eventId=? AND _detailID=?",
+                new String[] {Integer.toString(eventID), Integer.toString(itemID)});
     }
 
-    public void insertItemForEvent(SQLiteDatabase db, String event, Item item) {
+    public void insertItemForEvent(SQLiteDatabase db, int eventID, Item item) {
 
         String sql;
         sql = "INSERT INTO EVENT_DETAIL (ItemName, ItemUnit, ItemQuantity, eventId) " +
                 "VALUES ('" + item.getName() + "', '" + item.getUnit() + "', '" +
-                item.getQuantity() + "', (SELECT _eventId from EVENT_MASTER WHERE NAME = '" +
-                event + "'));";
-        db.execSQL(sql);
-    }
-
-
-    public void insertItemForEvent(SQLiteDatabase db, Event event, Item item) {
-
-        String sql;
-        sql = "INSERT INTO EVENT_DETAIL (ItemName, ItemUnit, ItemQuantity, eventId) " +
-                "VALUES ('" + item.getName() + "', '" + item.getUnit() + "', '" +
-                item.getQuantity() + "', (SELECT _eventId from EVENT_MASTER WHERE NAME = '" +
-                event.getName() + "'));";
+                item.getQuantity() + "', '" + eventID + "');";
         db.execSQL(sql);
     }
 
@@ -121,35 +111,13 @@ public class DBHelper extends SQLiteOpenHelper {
         db.delete("EVENT_MASTER", "_eventId=?", new String[] {Integer.toString(eventID)});
     }
 
-    public void updateItem(final SQLiteDatabase db, Item item, int eventID, int itemID) {
-//        String sql;
-//        sql = "UPDATE EVENT_MASTER SET (Name, Date, Time) = ('" + event.getName() + "', '"
-//        + event.getDate() + "', '" + event.getTime() + "')" + "WHERE _eventid = '"
-//                + eventID + "' ";
-//        db.execSQL(sql);
-        ContentValues values = new ContentValues();
-        values.put("ItemName", item.getName());
-        values.put("ItemUnit", item.getUnit());
-        values.put("ItemQuantity", item.getQuantity());
-
-        db.update("EVENT_DETAIL", values, "eventId=? AND _detailID=?",
-                new String[] {Integer.toString(eventID), Integer.toString(itemID)});
-
-    }
-
     public void updateEvent(final SQLiteDatabase db, Event event, int eventID) {
-//        String sql;
-//        sql = "UPDATE EVENT_MASTER SET (Name, Date, Time) = ('" + event.getName() + "', '"
-//        + event.getDate() + "', '" + event.getTime() + "')" + "WHERE _eventid = '"
-//                + eventID + "' ";
-//        db.execSQL(sql);
         ContentValues values = new ContentValues();
         values.put("Name", event.getName());
         values.put("Date", event.getDate());
         values.put("Time", event.getTime());
 
         db.update("EVENT_MASTER", values, "_eventId=?", new String[] {Integer.toString(eventID)});
-
     }
 
     public void insertEvent(final SQLiteDatabase db, Event event) {
@@ -202,17 +170,4 @@ public class DBHelper extends SQLiteOpenHelper {
         return sql;
     }
 
-//    public String createContributionTable() {
-//
-//        String sql = "";
-//        sql += "CREATE TABLE CONTRIBUTION (";
-//        sql += "_contributionId INTEGER PRIMARY KEY AUTOINCREMENT, ";
-//        sql += "Name TEXT, ";
-//        sql += "Quantity TEXT, ";
-//        sql += "Date TEXT, ";
-//        sql += "detailId INTEGER, ";
-//        sql += "FOREIGN KEY(detailId) REFERENCES EVENT_DETAIL(_detailId)); ";
-//
-//        return sql;
-//    }
 }

@@ -6,47 +6,62 @@
 
     <TextView
         android:id="@+id/nameTitle"
-        android:layout_width="125dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Change name" />
+        android:text="Change name"
+        android:textSize="18dp"
+        android:layout_gravity="center"/>
 
     <EditText
-        android:layout_width="125dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/changeEventName"
-        android:text="sometext"/>
+        android:text=""
+        android:textSize="18dp"
+        android:layout_gravity="center"/>
 
     <TextView
         android:id="@+id/dateTitle"
-        android:layout_width="125dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Change date" />
+        android:text="Change date"
+        android:textSize="18dp"
+        android:layout_gravity="center"/>
 
     <EditText
-        android:layout_width="125dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/changeEventDate"
-        android:text="sometext"/>
+        android:text=""
+        android:textSize="18dp"
+        android:layout_gravity="center"/>
 
     <TextView
         android:id="@+id/timeTitle"
-        android:layout_width="125dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Change time" />
+        android:text="Change time"
+        android:textSize="18dp"
+        android:layout_gravity="center"/>
 
     <EditText
-        android:layout_width="125dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/changeEventTime"
-        android:text="sometext"/>
+        android:text=""
+        android:textSize="18dp"
+        android:layout_gravity="center"/>
 
     <Button
         android:id="@+id/updateEventButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Update Event" />
+        android:layout_marginTop="20dp"
+        android:text="Update Event"
+        android:textSize="15dp"
+        android:layout_gravity="center"/>
 
 </LinearLayout>

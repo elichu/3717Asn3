@@ -6,16 +6,30 @@
     <TextView
         android:id="@+id/itemName"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text=""
+
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/itemUnit"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text=""
+
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="2dp"
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/itemQuantity"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="2dp"
+        android:textSize="18sp"/>
 
 </LinearLayout>

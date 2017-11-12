@@ -1,9 +1,16 @@
 package ca.bcit.ass3.chu_stannus_liu;
 
 import android.app.Activity;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +20,7 @@ import android.widget.ListView;
  * Created by E on 2017-11-11.
  */
 
-public class CreateEventActivity extends Activity{
+public class CreateEventActivity extends AppCompatActivity {
 
     private DBHelper helper;
     private ListView lv;
@@ -63,5 +70,43 @@ public class CreateEventActivity extends Activity{
 
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+
+        // Associate searchable configuration with the SearchView
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.searchEvent).getActionView();
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getComponentName()));
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.goHome:
+                Intent i3 = new Intent(this, MainActivity.class);
+                startActivity(i3);
+                return true;
+            case R.id.aboutApp:
+                Intent i4 = new Intent(this, AboutAppActivity.class);
+                startActivity(i4);
+                return true;
+            case R.id.exitApp:
+                Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+                homeIntent.addCategory( Intent.CATEGORY_HOME );
+                homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(homeIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

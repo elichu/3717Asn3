@@ -3,11 +3,12 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
-        android:id="@+id/itemTitle"
+        android:id="@+id/nameTitle"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:text="Change name"
         android:textSize="18dp"
         android:layout_gravity="center"/>
@@ -15,61 +16,51 @@
     <EditText
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:id="@+id/changeItemName"
+        android:id="@+id/changeEventName"
         android:text=""
         android:textSize="18dp"
         android:layout_gravity="center"/>
 
     <TextView
-        android:id="@+id/unitTitle"
+        android:id="@+id/dateTitle"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Change unit"
+        android:text="Change date"
         android:textSize="18dp"
         android:layout_gravity="center"/>
 
     <EditText
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:id="@+id/changeUnit"
+        android:id="@+id/changeEventDate"
         android:text=""
         android:textSize="18dp"
         android:layout_gravity="center"/>
 
     <TextView
-        android:id="@+id/quantityTitle"
+        android:id="@+id/timeTitle"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Change quantity"
+        android:text="Change time"
         android:textSize="18dp"
         android:layout_gravity="center"/>
 
     <EditText
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:id="@+id/changeQuantity"
+        android:id="@+id/changeEventTime"
         android:text=""
-        android:inputType="number"
         android:textSize="18dp"
         android:layout_gravity="center"/>
 
     <Button
-        android:id="@+id/updateItemButton"
+        android:id="@+id/updateEventButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Update Item"
-        android:textSize="15dp"
-        android:layout_gravity="center"/>
-
-    <Button
-        android:id="@+id/deleteItemButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Delete Item"
+        android:layout_marginTop="8dp"
+        android:text="Update Event"
         android:textSize="15dp"
         android:layout_gravity="center"/>
 

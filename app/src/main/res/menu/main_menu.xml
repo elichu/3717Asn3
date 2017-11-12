@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:appcompat="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/searchEvent"
+        android:title="Search Events"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="always" />
+
+
+    <item android:id="@+id/createEvent"
+        android:title="Create Event"
+        android:icon="@drawable/rate_star_big_on_holo_dark"
+        app:showAsAction="always" />
+
+    <item android:id="@+id/overflowMenu"
+        android:title="Overflow Menu"
+        android:icon="@drawable/ic_menu_moreoverflow_normal_holo_dark"
+        app:showAsAction="always" >
+        <menu>
+            <item
+                android:id="@+id/goHome"
+                android:title="Home"/>
+            <item
+                android:id="@+id/aboutApp"
+                android:title="About"/>
+            <item
+                android:id="@+id/exitApp"
+                android:title="Exit"/>
+        </menu>
+    </item>
+
+</menu>
