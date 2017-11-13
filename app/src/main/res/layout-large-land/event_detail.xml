@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="n"
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:layout_gravity="center"/>
 
     <TextView
@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="d"
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:layout_gravity="center"/>
 
     <TextView
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:text="t"
 
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:layout_gravity="center"/>
 
     <Button
@@ -34,8 +34,8 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="Get Items"
-        android:textSize="20dp"
+        android:text="@string/get_items"
+        android:textSize="30dp"
         android:layout_gravity="center"/>
 
     <Button
@@ -43,8 +43,8 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Add an Item"
-        android:textSize="20dp"
+        android:text="@string/add_item2"
+        android:textSize="30dp"
         android:layout_gravity="center"/>
 
     <Button
@@ -52,8 +52,8 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Edit Event"
-        android:textSize="20dp"
+        android:text="@string/edit_event"
+        android:textSize="30dp"
         android:layout_gravity="center"/>
 
     <Button
@@ -61,8 +61,8 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Delete Event"
-        android:textSize="20dp"
+        android:text="@string/delete_event"
+        android:textSize="30dp"
         android:layout_gravity="center"/>
 
 </LinearLayout>

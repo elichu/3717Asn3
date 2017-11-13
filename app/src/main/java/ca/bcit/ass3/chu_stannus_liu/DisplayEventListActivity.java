@@ -29,12 +29,8 @@ public class DisplayEventListActivity extends AppCompatActivity {
     private ListView lv;
     private SQLiteDatabase db;
 
-    ArrayList<String> eventlist = new ArrayList<String>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        final LoaderManager manager;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_list);
@@ -74,7 +70,6 @@ public class DisplayEventListActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
 
-        // Associate searchable configuration with the SearchView
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView =

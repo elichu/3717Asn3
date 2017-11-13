@@ -25,9 +25,7 @@ public class CreateEventActivity extends AppCompatActivity {
     private DBHelper helper;
     private ListView lv;
     private SQLiteDatabase db;
-    int eventNum;
     String eventName;
-    int eventID = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +38,6 @@ public class CreateEventActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                float inputDecimal = 0;
                 EditText eName = (EditText) findViewById(R.id.addName);
                 EditText eDate = (EditText) findViewById(R.id.addDate);
                 EditText eTime = (EditText) findViewById(R.id.addTime);
@@ -77,7 +74,6 @@ public class CreateEventActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
 
-        // Associate searchable configuration with the SearchView
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView =

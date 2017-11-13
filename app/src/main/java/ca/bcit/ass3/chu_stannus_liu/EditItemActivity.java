@@ -25,8 +25,6 @@ public class EditItemActivity extends AppCompatActivity {
 
     private SQLiteDatabase db;
     private DBHelper helper;
-    private Cursor cursor;
-    private Event event;
 
     int eventNum;
     String eventName;
@@ -51,9 +49,9 @@ public class EditItemActivity extends AppCompatActivity {
         eventNum = intent.getIntExtra("event", 0);
         eventName = intent.getStringExtra("eventName");
 
-        final String itemName = intent.getStringExtra("itemName");
-        String itemUnit = intent.getStringExtra("itemUnit");
-        int itemQuantity = intent.getIntExtra("itemQuantity", 0);
+        itemName = intent.getStringExtra("itemName");
+        itemUnit = intent.getStringExtra("itemUnit");
+        itemQuantity = intent.getIntExtra("itemQuantity", 0);
 
         db = helper.getReadableDatabase();
         // db.beginTransaction();
@@ -131,7 +129,6 @@ public class EditItemActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
 
-        // Associate searchable configuration with the SearchView
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView =

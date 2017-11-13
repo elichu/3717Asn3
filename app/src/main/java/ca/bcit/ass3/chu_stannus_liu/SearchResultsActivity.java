@@ -35,15 +35,11 @@ public class SearchResultsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        final LoaderManager manager;
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_list);
 
         helper = new DBHelper(this);
 
-        //Intent intent = getIntent();
-        //String keywords = intent.getStringExtra("keywords");
         handleIntent(getIntent());
 
         lv = (ListView) findViewById(R.id.list);
@@ -68,15 +64,6 @@ public class SearchResultsActivity extends AppCompatActivity {
         lv.setAdapter(adapter);
     }
 
-//        private class SearchProcess extends AsyncTask<Void, Void, String> {
-//
-//
-//        @Override
-//        protected String doInBackground(Void... voids) {
-//            return null;
-//        }
-//    }
-
     @Override
     protected void onNewIntent(Intent intent) {
         handleIntent(intent);
@@ -94,7 +81,6 @@ public class SearchResultsActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
 
-        // Associate searchable configuration with the SearchView
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView =

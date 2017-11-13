@@ -51,7 +51,6 @@ public class DeleteEventActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DeleteEventActivity.this, MainActivity.class);
-                //intent.putExtra("event", eventNum);
                 startActivity(intent);
             }
         });
@@ -63,7 +62,6 @@ public class DeleteEventActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
 
-        // Associate searchable configuration with the SearchView
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView =

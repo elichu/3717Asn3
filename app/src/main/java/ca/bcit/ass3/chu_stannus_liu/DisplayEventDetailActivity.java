@@ -42,7 +42,6 @@ public class DisplayEventDetailActivity extends AppCompatActivity {
         eventName1 = intent.getStringExtra("eventName");
 
         db = helper.getReadableDatabase();
-       // db.beginTransaction();
         Cursor eventIdCursor = helper.retrieveEventId(db, eventName1);
         if (eventIdCursor.moveToFirst()) {
             eventID = eventIdCursor.getInt(0);
@@ -71,8 +70,6 @@ public class DisplayEventDetailActivity extends AppCompatActivity {
         final TextView eventNameText = (TextView) findViewById(R.id.eventName);
         final TextView eventDate = (TextView) findViewById(R.id.eventDate);
         final TextView eventTime = (TextView) findViewById(R.id.eventTime);
-
-        //helper = new DBHelper(this);
 
         db = helper.getReadableDatabase();
 
@@ -143,7 +140,6 @@ public class DisplayEventDetailActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     @Override
@@ -158,7 +154,6 @@ public class DisplayEventDetailActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
 
-        // Associate searchable configuration with the SearchView
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView =

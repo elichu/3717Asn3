@@ -25,7 +25,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="t"
-
         android:textSize="18dp"
         android:layout_gravity="center"/>
 
@@ -34,7 +33,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Get Items"
+        android:text="@string/get_items"
         android:textSize="15dp"
         android:layout_gravity="center"/>
 
@@ -42,7 +41,7 @@
         android:id="@+id/addItemButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Add an Item"
+        android:text="@string/add_item2"
         android:textSize="15dp"
         android:layout_gravity="center"/>
 
@@ -50,7 +49,7 @@
         android:id="@+id/editEventButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Edit Event"
+        android:text="@string/edit_event"
         android:textSize="15dp"
         android:layout_gravity="center"/>
 
@@ -58,7 +57,7 @@
         android:id="@+id/deleteEventButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Delete Event"
+        android:text="@string/delete_event"
         android:textSize="15dp"
         android:layout_gravity="center"/>
 

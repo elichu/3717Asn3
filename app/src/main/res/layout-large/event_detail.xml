@@ -25,7 +25,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="t"
-
         android:textSize="40dp"
         android:layout_gravity="center"/>
 
@@ -34,7 +33,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="Get Items"
+        android:text="@string/get_items"
         android:textSize="40dp"
         android:layout_gravity="center"/>
 
@@ -43,7 +42,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Add an Item"
+        android:text="@string/add_item2"
         android:textSize="40dp"
         android:layout_gravity="center"/>
 
@@ -52,7 +51,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Edit Event"
+        android:text="@string/edit_event"
         android:textSize="40dp"
         android:layout_gravity="center"/>
 
@@ -61,7 +60,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Delete Event"
+        android:text="@string/delete_event"
         android:textSize="40dp"
         android:layout_gravity="center"/>
 

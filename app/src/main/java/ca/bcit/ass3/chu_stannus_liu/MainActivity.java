@@ -3,6 +3,7 @@ package ca.bcit.ass3.chu_stannus_liu;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -25,18 +26,25 @@ public class MainActivity extends AppCompatActivity {
     private DBHelper helper;
     private ListView lv;
     private SQLiteDatabase db;
-    int eventNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_main);
 
-        if( getIntent().getBooleanExtra("Exit", false)){
-            finish();
-            return; // add this to prevent from doing unnecessary stuffs
-        }
+        helper = new DBHelper(this);
 
+        int eventID = 0;
+        db = helper.getReadableDatabase();
+        Cursor eventIdCursor = helper.getAllEvents(db);
+        if (eventIdCursor.moveToFirst()) {
+            eventID = eventIdCursor.getInt(0);
+        }
+        eventIdCursor.close();
+
+        if(eventID == 0) {
+            seedData();
+        }
 
         final Button createEventButton = (Button) findViewById(R.id.createEventButton);
         createEventButton.setOnClickListener(new View.OnClickListener() {
@@ -57,21 +65,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-//        final Button eventSearchButton = (Button) findViewById(R.id.eventSearchButton);
-//        eventSearchButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(searchEvent.getText().toString().isEmpty()){
-//                    return;
-//                }
-//
-//                Intent intent = new Intent(MainActivity.this, SearchResultsActivity.class);
-//                intent.putExtra("keywords", searchEvent.getText().toString());
-//                startActivity(intent);
-//
-//            }
-//        });
     }
 
     @Override
@@ -79,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
 
-        // Associate searchable configuration with the SearchView
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView =
@@ -114,5 +106,56 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void seedData() {
+
+        SQLiteDatabase db;
+
+        Event event = new Event("Christmas party", "December 25, 2017", "3:00pm");
+        Item[] items = {
+                new Item("Paper plates", "Pieces", 20),
+                new Item("Paper cups", "Pieces", 30),
+                new Item("Napkins", "Pieces", 100),
+                new Item("Beer", "6 Packs", 5),
+                new Item("Pop", "2 Liter bottles", 3),
+                new Item("Pizza", "Large", 3),
+                new Item("Peanuts", "Grams", 200)
+        };
+
+        db = helper.getWritableDatabase();
+        db.beginTransaction();
+        try {
+            helper.insertEvent(db, event);
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
+        addItemsToDB(event, items);
+    }
+
+    public void addItemsToDB(Event event, Item[] items) {
+
+        SQLiteDatabase db;
+
+        int eventID = 0;
+        db = helper.getReadableDatabase();
+        Cursor eventIdCursor = helper.retrieveEventId(db, event.getName());
+        if (eventIdCursor.moveToFirst()) {
+            eventID = eventIdCursor.getInt(0);
+        }
+        eventIdCursor.close();
+
+            db = helper.getWritableDatabase();
+            db.beginTransaction();
+            try {
+                for (Item item : items) {
+                    helper.insertItemForEvent(db, eventID, item);
+                }
+                db.setTransactionSuccessful();
+            } finally {
+                db.endTransaction();
+            }
+
     }
 }

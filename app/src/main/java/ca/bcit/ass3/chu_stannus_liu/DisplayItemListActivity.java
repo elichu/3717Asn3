@@ -20,7 +20,6 @@ public class DisplayItemListActivity extends AppCompatActivity {
     private DBHelper helper;
     private ListView lv;
     private SQLiteDatabase db;
-    int itemID = 0;
     int eventNum;
     String eventName;
     @Override
@@ -95,7 +94,6 @@ public class DisplayItemListActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
 
-        // Associate searchable configuration with the SearchView
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView =

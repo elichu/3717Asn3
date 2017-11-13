@@ -7,7 +7,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
-            android:text="Manage your event and keep track of event supplies"
+            android:text="@string/title1"
             android:textSize="35dp"
             android:textAlignment="center"
             android:layout_gravity="center"/>
@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="Create an event now or view all events"
+            android:text="@string/title2"
             android:textSize="35dp"
             android:textAlignment="center"
             android:layout_gravity="center"/>
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="Create an event"
+            android:text="@string/create_event2"
             android:textSize="40dp"
             android:layout_gravity="center"/>
         />
@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="View all events"
+            android:text="@string/view_all"
             android:textSize="40dp"
             android:layout_gravity="center"/>
 

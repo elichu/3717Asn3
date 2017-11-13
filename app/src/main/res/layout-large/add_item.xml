@@ -8,7 +8,7 @@
         android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="Add Item"
+        android:text="@string/add_item"
         android:textSize="40dp"
         android:layout_gravity="center"/>
 
@@ -24,7 +24,7 @@
         android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="Add Item unit"
+        android:text="@string/add_unit"
         android:textSize="40dp"
         android:layout_gravity="center"/>
 
@@ -40,7 +40,7 @@
         android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="Add Item quantity"
+        android:text="@string/add_quantity"
         android:textSize="40dp"
         android:layout_gravity="center"/>
 
@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="90dp"
         android:layout_marginTop="90dp"
-        android:text="Create item and add to event"
+        android:text="@string/add_item_button"
         android:textSize="25dp"
         android:layout_gravity="center"/>
 

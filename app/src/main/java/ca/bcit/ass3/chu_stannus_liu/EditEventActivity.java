@@ -25,8 +25,7 @@ public class EditEventActivity extends AppCompatActivity {
         private SQLiteDatabase db;
         private DBHelper helper;
         private Cursor cursor;
-        private Event event;
-        int event1;
+        int eventNum;
         String eventName;
 
         EditText changeEventName;
@@ -41,7 +40,8 @@ public class EditEventActivity extends AppCompatActivity {
             helper = new DBHelper(this);
 
             Intent intent = getIntent();
-            event1 = intent.getIntExtra("event", 0);
+            eventNum = intent.getIntExtra("event", 0);
+
             eventName = intent.getStringExtra("eventName");
             String eventDate = intent.getStringExtra("eventDate");
             String eventTime = intent.getStringExtra("eventTime");
@@ -54,18 +54,18 @@ public class EditEventActivity extends AppCompatActivity {
             changeEventDate.setText(eventDate);
             changeEventTime.setText(eventTime);
 
-            if (changeEventName.getText().toString().isEmpty() || changeEventDate.getText().toString().isEmpty()
-                    || changeEventTime.getText().toString().isEmpty()) {
-                return;
-            }
-
             final Button updateEventButton = (Button) findViewById(R.id.updateEventButton);
             updateEventButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
+                    if (changeEventName.getText().toString().isEmpty() || changeEventDate.getText().toString().isEmpty()
+                            || changeEventTime.getText().toString().isEmpty()) {
+                        return;
+                    }
+
                     Intent intent = new Intent(EditEventActivity.this, DisplayEventDetailActivity.class);
-                    intent.putExtra("event", event1);
+                    intent.putExtra("event", eventNum);
                     intent.putExtra("eventName", eventName);
 
                     intent.putExtra("changeEventName", changeEventName.getText().toString());
@@ -79,7 +79,7 @@ public class EditEventActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(EditEventActivity.this, DisplayEventDetailActivity.class);
-        intent.putExtra("event", event1);
+        intent.putExtra("event", eventNum);
         intent.putExtra("eventName", eventName);
         startActivity(intent);
     }

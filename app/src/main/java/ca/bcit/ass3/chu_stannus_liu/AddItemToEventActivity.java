@@ -25,10 +25,12 @@ public class AddItemToEventActivity extends AppCompatActivity {
 
     private SQLiteDatabase db;
     private DBHelper helper;
-    private Cursor cursor;
-    private Event event;
     int eventNum;
     String eventName;
+
+    EditText eItem;
+    EditText eUnit;
+    EditText eQuantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +44,20 @@ public class AddItemToEventActivity extends AppCompatActivity {
         eventNum = intent.getIntExtra("event", 0);
         eventName = intent.getStringExtra("eventName");
 
+        eItem = (EditText) findViewById(R.id.addItem);
+        eUnit = (EditText) findViewById(R.id.addUnit);
+        eQuantity = (EditText) findViewById(R.id.addQuantity);
+
         final Button button2 = (Button) findViewById(R.id.button2);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(eItem.getText().toString().isEmpty() || eUnit.getText().toString().isEmpty()
+                        || eQuantity.getText().toString().isEmpty()) {
+                    return;
+                }
+
                 Item item = getItemFromInputs();
                 addItemToDB(item);
 
@@ -76,42 +88,9 @@ public class AddItemToEventActivity extends AppCompatActivity {
         }
     }
 
-    public void addEventToDB(Event event) {
-
-        SQLiteDatabase db;
-
-        db = helper.getWritableDatabase();
-        db.beginTransaction();
-        try {
-            helper.insertEvent(db, event);
-            db.setTransactionSuccessful();
-        } finally {
-            db.endTransaction();
-        }
-
-        attachEventId(event);
-    }
-
-    public void attachEventId(Event event) {
-        Cursor cursor = helper.retrieveEventId(db, event);
-        if (cursor.moveToFirst() ) {
-            event.setEventId(cursor.getString(0));
-        }
-        cursor.close();
-    }
-
     public Item getItemFromInputs() {
 
         Item item = null;
-
-        EditText eItem = (EditText) findViewById(R.id.addItem);
-        EditText eUnit = (EditText) findViewById(R.id.addUnit);
-        EditText eQuantity = (EditText) findViewById(R.id.addQuantity);
-
-        if(eItem.getText().toString().isEmpty() || eUnit.getText().toString().isEmpty()
-                || eQuantity.getText().toString().isEmpty()) {
-            return item;
-        }
 
         String itemName = eItem.getText().toString();
         String itemUnit = eUnit.getText().toString();
@@ -136,7 +115,6 @@ public class AddItemToEventActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
 
-        // Associate searchable configuration with the SearchView
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView =

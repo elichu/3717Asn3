@@ -8,8 +8,8 @@
         android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Change name"
-        android:textSize="20dp"
+        android:text="@string/change_name"
+        android:textSize="30dp"
         android:layout_gravity="center"/>
 
     <EditText
@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/changeItemName"
         android:text=""
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:layout_gravity="center"/>
 
     <TextView
@@ -25,8 +25,8 @@
         android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Change unit"
-        android:textSize="20dp"
+        android:text="@string/change_unit"
+        android:textSize="30dp"
         android:layout_gravity="center"/>
 
     <EditText
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/changeUnit"
         android:text=""
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:layout_gravity="center"/>
 
     <TextView
@@ -42,8 +42,8 @@
         android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Change quantity"
-        android:textSize="20dp"
+        android:text="@string/change_quantity"
+        android:textSize="30dp"
         android:layout_gravity="center"/>
 
     <EditText
@@ -52,7 +52,7 @@
         android:id="@+id/changeQuantity"
         android:text=""
         android:inputType="number"
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:layout_gravity="center"/>
 
     <Button
@@ -60,8 +60,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Update Item"
-        android:textSize="20dp"
+        android:text="@string/update_item"
+        android:textSize="30dp"
         android:layout_gravity="center"/>
 
     <Button
@@ -69,8 +69,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Delete Item"
-        android:textSize="20dp"
+        android:text="@string/delete_item"
+        android:textSize="30dp"
         android:layout_gravity="center"/>
 
 </LinearLayout>
