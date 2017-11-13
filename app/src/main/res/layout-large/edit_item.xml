@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/itemTitle"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Change name"
+        android:textSize="40dp"
+        android:layout_gravity="center"/>
+
+    <EditText
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/changeItemName"
+        android:text=""
+        android:textSize="40dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/unitTitle"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Change unit"
+        android:textSize="40dp"
+        android:layout_gravity="center"/>
+
+    <EditText
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/changeUnit"
+        android:text=""
+        android:textSize="40dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/quantityTitle"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Change quantity"
+        android:textSize="40dp"
+        android:layout_gravity="center"/>
+
+    <EditText
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/changeQuantity"
+        android:text=""
+        android:inputType="number"
+        android:textSize="40dp"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/updateItemButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="Update Item"
+        android:textSize="40dp"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/deleteItemButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Delete Item"
+        android:textSize="40dp"
+        android:layout_gravity="center"/>
+
+</LinearLayout>

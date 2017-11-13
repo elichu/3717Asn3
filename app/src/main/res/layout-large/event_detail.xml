@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/eventName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="n"
+        android:textSize="40dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/eventDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="d"
+        android:textSize="40dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/eventTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="t"
+
+        android:textSize="40dp"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/getItemButton"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Get Items"
+        android:textSize="40dp"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/addItemButton"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Add an Item"
+        android:textSize="40dp"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/editEventButton"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Edit Event"
+        android:textSize="40dp"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/deleteEventButton"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Delete Event"
+        android:textSize="40dp"
+        android:layout_gravity="center"/>
+
+</LinearLayout>

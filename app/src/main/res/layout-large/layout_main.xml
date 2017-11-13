@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/mainTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:text="Manage your event and keep track of event supplies"
+            android:textSize="35dp"
+            android:textAlignment="center"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/mainTitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Create an event now or view all events"
+            android:textSize="35dp"
+            android:textAlignment="center"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/createEventButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Create an event"
+            android:textSize="40dp"
+            android:layout_gravity="center"/>
+        />
+
+        <Button
+            android:id="@+id/eventListButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="View all events"
+            android:textSize="40dp"
+            android:layout_gravity="center"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:src="@drawable/party"
+            android:layout_marginTop="70dp"
+            android:layout_gravity="center"
+            style="@style/imgView"/>
+
+        <TextView
+            android:id="@+id/group_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:text="@string/group_info"
+            android:textSize="40dp"
+            android:textAlignment="center"
+            android:layout_gravity="center"/>
+
+
+
+
+    </LinearLayout>
